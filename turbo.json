@@ -19,6 +19,7 @@
     },
     "start": {
       "dependsOn": ["build"],
+      "outputs": ["dist/**", ".next/**"],
       "cache": false
     }
   }
