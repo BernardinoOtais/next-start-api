@@ -1,0 +1,22 @@
+{
+  "extends": "@repo/typescript-config/base.json",
+  "compilerOptions": {
+    "target": "es2024",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "skipLibCheck": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "baseUrl": "./",
+    "paths": {
+      "@clients/*": ["./src/generated/*"],
+      "@/*": ["./src/*"]
+    }
+  },
+  "esModuleInterop": true,
+  "allowSyntheticDefaultImports": true,
+  "resolveJsonModule": true,
+  "skipLibCheck": true,
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "src/generated/"]
+}

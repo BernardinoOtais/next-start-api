@@ -1,0 +1,21 @@
+{
+  "name": "@repo/db",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc",
+    "lint": "eslint . --max-warnings 0"
+  },
+  "dependencies": {
+    "@prisma/adapter-mssql": "^7.2.0",
+    "@prisma/client": "^7.2.0",
+    "@repo/encryption": "*",
+    "sql-template-tag": "^5.2.1"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "prisma": "^7.2.0"
+  }
+}

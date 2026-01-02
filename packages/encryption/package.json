@@ -1,0 +1,27 @@
+{
+  "name": "@repo/encryption",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    "./argon2": {
+      "types": "./dist/argon2.d.ts",
+      "default": "./dist/argon2.js"
+    }
+  },
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc",
+    "lint": "eslint . --max-warnings 0"
+  },
+  "dependencies": {
+    "@node-rs/argon2": "^2.0.2",
+    "@repo/tipos": "*",
+    "jsonwebtoken": "^9.0.3"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "@types/jsonwebtoken": "^9.0.10"
+  },
+  "keywords": []
+}
