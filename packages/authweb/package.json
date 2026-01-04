@@ -1,0 +1,38 @@
+{
+  "name": "@repo/authweb",
+  "version": "1.0.0",
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "./auth": {
+      "types": "./dist/next/auth-next.d.ts",
+      "default": "./dist/next/auth-next.js"
+    },
+    "./authstart": {
+      "types": "./dist/start/auth-start.d.ts",
+      "default": "./dist/start/auth-start.js"
+    },
+    "./options": {
+      "types": "./dist/root/auth-options.d.ts",
+      "default": "./dist/root/auth-options.js"
+    }
+  },
+  "scripts": {
+    "dev": "tsc --watch & tsc-alias --watch",
+    "build": "tsc && tsc-alias",
+    "lint": "eslint . --max-warnings 0"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*"
+  },
+  "dependencies": {
+    "@repo/db": "*",
+    "@repo/encryption": "*",
+    "better-auth": "^1.4.10"
+  }
+}

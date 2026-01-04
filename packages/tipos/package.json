@@ -10,7 +10,7 @@
   },
   "scripts": {
     "dev": "tsc --watch",
-    "build": "tsc",
+    "build": "tsc && tsc-alias",
     "lint": "eslint . --max-warnings 0"
   },
   "keywords": [],

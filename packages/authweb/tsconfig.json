@@ -9,8 +9,6 @@
     "rootDir": "./src",
     "baseUrl": "./",
     "paths": {
-      "@clients/*": ["./src/generated/*"],
-      "@prisma/*": ["./src/client-adapters/*"],
       "@/*": ["./src/*"]
     }
   },

@@ -1,5 +1,6 @@
 {
   "name": "next-start-api",
+  "type": "module",
   "private": true,
   "scripts": {
     "build": "turbo run build",
@@ -11,6 +12,7 @@
   },
   "devDependencies": {
     "prettier": "^3.7.4",
+    "tsc-alias": "^1.8.16",
     "turbo": "^2.7.2",
     "typescript": "5.9.2"
   },
@@ -23,6 +25,7 @@
     "packages/*"
   ],
   "dependencies": {
+    "@rollup/rollup-darwin-arm64": "^4.54.0",
     "zod": "^4.3.4"
   }
 }

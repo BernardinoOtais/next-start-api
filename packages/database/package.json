@@ -2,15 +2,25 @@
   "name": "@repo/db",
   "version": "1.0.0",
   "type": "module",
+  "exports": {
+    "./authweb": {
+      "types": "./dist/auth-web/index.d.ts",
+      "default": "./dist/auth-web/index.js"
+    },
+    "./auth-adapter": {
+      "types": "./dist/client-adapters/auth/auth.d.ts",
+      "default": "./dist/client-adapters/auth/auth.js"
+    }
+  },
   "scripts": {
-    "dev": "tsc --watch",
-    "build": "tsc",
+    "dev": "tsc --watch & tsc-alias --watch",
+    "build": "tsc && tsc-alias",
     "lint": "eslint . --max-warnings 0"
   },
   "dependencies": {
+    "@repo/encryption": "*",
     "@prisma/adapter-mssql": "^7.2.0",
     "@prisma/client": "^7.2.0",
-    "@repo/encryption": "*",
     "sql-template-tag": "^5.2.1"
   },
   "devDependencies": {

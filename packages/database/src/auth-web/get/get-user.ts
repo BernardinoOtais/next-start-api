@@ -1,4 +1,4 @@
-import { prisma } from "@/client-adapters/auth/auth";
+import { prisma } from "@prisma/auth/auth";
 
 export const getUserDb = async (userId: string) =>
   prisma.user.findUnique({
