@@ -15,4 +15,5 @@ const eslintConfig = defineConfig([
   ]),
 ]);
 
+import {} from "@repo/ui/globals.css";
 export default eslintConfig;

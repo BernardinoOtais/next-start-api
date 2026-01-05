@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { Providers } from "@/component/providers/providers";
+
+import "@repo/ui/globals.css";
 
 export const metadata: Metadata = {
   title: {
@@ -14,8 +17,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`antialiased`}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`antialiased`}>
+        <Providers
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </Providers>
+      </body>
     </html>
   );
 }
