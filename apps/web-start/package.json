@@ -13,6 +13,7 @@
     "check": "prettier --write . && eslint --fix"
   },
   "dependencies": {
+    "@repo/ui": "*",
     "@repo/authweb": "*",
     "@repo/tipos": "*",
     "@tailwindcss/vite": "^4.0.6",
