@@ -1,8 +1,17 @@
 {
+  "extends": "@repo/typescript-config/base.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
-    }
-  }
+      "@repo/ui*": ["./src/*"],
+      "@/*": ["./src/*"],
+      "@/lib/*": ["./src/lib/*"]
+    },
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": false
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }

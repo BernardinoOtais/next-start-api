@@ -18,6 +18,14 @@ const config = defineConfig({
     tanstackStart(),
     viteReact(),
   ],
+  optimizeDeps: {
+    exclude: ['@node-rs/argon2'],
+  },
+  build: {
+    rollupOptions: {
+      external: ['@node-rs/argon2'], // prevent Rollup from bundling it
+    },
+  },
 })
 
 export default config
