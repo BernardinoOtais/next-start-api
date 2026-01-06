@@ -7,7 +7,7 @@
     "dist"
   ],
   "exports": {
-    "./auth": {
+    "./authnext": {
       "types": "./dist/next/auth-next.d.ts",
       "default": "./dist/next/auth-next.js"
     },

@@ -13,9 +13,9 @@
     "check": "prettier --write . && eslint --fix"
   },
   "dependencies": {
-    "@repo/ui": "*",
     "@repo/authweb": "*",
     "@repo/tipos": "*",
+    "@repo/ui": "*",
     "@tailwindcss/vite": "^4.0.6",
     "@tanstack/react-devtools": "^0.7.0",
     "@tanstack/react-router": "^1.132.0",
