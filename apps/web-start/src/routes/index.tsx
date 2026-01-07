@@ -12,12 +12,12 @@ function App() {
             <div className="bg-image h-32.5 w-full bg-contain bg-center bg-no-repeat " />
           </Link>
         </Button>
-        <div className="relative w-full h-full">
+        <div className="relative w-full max-w-480 aspect-70/45 mx-auto ">
           <img
             src="/assets/fmoda.jpg"
             alt="Fmoda"
             sizes="(max-width: 768px) 100vw, 700px"
-            className="object-cover mx-auto px-2"
+            className="object-cover px-2 mx-auto"
           />
         </div>
       </div>

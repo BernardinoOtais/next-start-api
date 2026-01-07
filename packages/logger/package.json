@@ -1,0 +1,23 @@
+{
+  "name": "@repo/logger",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    "./logger-api": "./dist/api/logger-api.js",
+    "./logger-web": "./dist/web/logger-web.js"
+  },
+  "scripts": {
+    "dev": "tsc --watch & tsc-alias --watch",
+    "build": "tsc && tsc-alias",
+    "lint": "eslint . --max-warnings 0"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*"
+  },
+  "keywords": [],
+  "dependencies": {
+    "winston": "^3.19.0",
+    "winston-daily-rotate-file": "^5.0.0"
+  }
+}

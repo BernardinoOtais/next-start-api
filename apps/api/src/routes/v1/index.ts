@@ -1,21 +1,20 @@
 import { server } from "@config/config";
-import { PAPEL_ROTA_ADMINISTRADOR } from "@repo/tipos";
 import HttpStatusCode from "@utils/http-status-code";
 import { Router } from "express";
 
 import type { Response, Request } from "express";
 
-const raiz = Router();
+const routes = Router();
 
-raiz.get("/", (req: Request, res: Response) => {
+routes.get("/", (req: Request, res: Response) => {
   res.status(HttpStatusCode.OK).json({
     tipo: server.NODE_ENV,
     dateTime: new Date().toISOString(),
     status: "RUNNING",
     protected: false,
     hello: "FMODA",
-    papel: PAPEL_ROTA_ADMINISTRADOR,
+    papel: "Rota Principal",
   });
 });
 
-export default raiz;
+export default routes;

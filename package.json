@@ -26,6 +26,7 @@
   ],
   "dependencies": {
     "@rollup/rollup-darwin-arm64": "^4.54.0",
+    "dotenv": "^17.2.3",
     "zod": "^4.3.4"
   }
 }

@@ -14,10 +14,6 @@
     "./authstart": {
       "types": "./dist/start/auth-start.d.ts",
       "default": "./dist/start/auth-start.js"
-    },
-    "./options": {
-      "types": "./dist/root/auth-options.d.ts",
-      "default": "./dist/root/auth-options.js"
     }
   },
   "scripts": {
