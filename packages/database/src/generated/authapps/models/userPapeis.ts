@@ -20,40 +20,58 @@ export type userPapeisModel = runtime.Types.Result.DefaultSelection<Prisma.$user
 
 export type AggregateUserPapeis = {
   _count: UserPapeisCountAggregateOutputType | null
+  _avg: UserPapeisAvgAggregateOutputType | null
+  _sum: UserPapeisSumAggregateOutputType | null
   _min: UserPapeisMinAggregateOutputType | null
   _max: UserPapeisMaxAggregateOutputType | null
 }
 
+export type UserPapeisAvgAggregateOutputType = {
+  idPapeis: number | null
+}
+
+export type UserPapeisSumAggregateOutputType = {
+  idPapeis: number | null
+}
+
 export type UserPapeisMinAggregateOutputType = {
-  userId: string | null
-  idPapel: string | null
+  id: string | null
+  idPapeis: number | null
 }
 
 export type UserPapeisMaxAggregateOutputType = {
-  userId: string | null
-  idPapel: string | null
+  id: string | null
+  idPapeis: number | null
 }
 
 export type UserPapeisCountAggregateOutputType = {
-  userId: number
-  idPapel: number
+  id: number
+  idPapeis: number
   _all: number
 }
 
 
+export type UserPapeisAvgAggregateInputType = {
+  idPapeis?: true
+}
+
+export type UserPapeisSumAggregateInputType = {
+  idPapeis?: true
+}
+
 export type UserPapeisMinAggregateInputType = {
-  userId?: true
-  idPapel?: true
+  id?: true
+  idPapeis?: true
 }
 
 export type UserPapeisMaxAggregateInputType = {
-  userId?: true
-  idPapel?: true
+  id?: true
+  idPapeis?: true
 }
 
 export type UserPapeisCountAggregateInputType = {
-  userId?: true
-  idPapel?: true
+  id?: true
+  idPapeis?: true
   _all?: true
 }
 
@@ -95,6 +113,18 @@ export type UserPapeisAggregateArgs<ExtArgs extends runtime.Types.Extensions.Int
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: UserPapeisAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: UserPapeisSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: UserPapeisMinAggregateInputType
@@ -125,14 +155,18 @@ export type userPapeisGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   _count?: UserPapeisCountAggregateInputType | true
+  _avg?: UserPapeisAvgAggregateInputType
+  _sum?: UserPapeisSumAggregateInputType
   _min?: UserPapeisMinAggregateInputType
   _max?: UserPapeisMaxAggregateInputType
 }
 
 export type UserPapeisGroupByOutputType = {
-  userId: string
-  idPapel: string
+  id: string
+  idPapeis: number
   _count: UserPapeisCountAggregateOutputType | null
+  _avg: UserPapeisAvgAggregateOutputType | null
+  _sum: UserPapeisSumAggregateOutputType | null
   _min: UserPapeisMinAggregateOutputType | null
   _max: UserPapeisMaxAggregateOutputType | null
 }
@@ -156,69 +190,78 @@ export type userPapeisWhereInput = {
   AND?: Prisma.userPapeisWhereInput | Prisma.userPapeisWhereInput[]
   OR?: Prisma.userPapeisWhereInput[]
   NOT?: Prisma.userPapeisWhereInput | Prisma.userPapeisWhereInput[]
-  userId?: Prisma.StringFilter<"userPapeis"> | string
-  idPapel?: Prisma.StringFilter<"userPapeis"> | string
-  Papeis?: Prisma.XOR<Prisma.PapeisScalarRelationFilter, Prisma.PapeisWhereInput>
+  id?: Prisma.StringFilter<"userPapeis"> | string
+  idPapeis?: Prisma.IntFilter<"userPapeis"> | number
+  papel?: Prisma.XOR<Prisma.PapelScalarRelationFilter, Prisma.papelWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.userWhereInput>
+  userPapeisPermissoes?: Prisma.UserPapeisPermissoesListRelationFilter
 }
 
 export type userPapeisOrderByWithRelationInput = {
-  userId?: Prisma.SortOrder
-  idPapel?: Prisma.SortOrder
-  Papeis?: Prisma.PapeisOrderByWithRelationInput
+  id?: Prisma.SortOrder
+  idPapeis?: Prisma.SortOrder
+  papel?: Prisma.papelOrderByWithRelationInput
   user?: Prisma.userOrderByWithRelationInput
+  userPapeisPermissoes?: Prisma.userPapeisPermissoesOrderByRelationAggregateInput
 }
 
 export type userPapeisWhereUniqueInput = Prisma.AtLeast<{
-  userId_idPapel?: Prisma.userPapeisUserIdIdPapelCompoundUniqueInput
+  id_idPapeis?: Prisma.userPapeisIdIdPapeisCompoundUniqueInput
   AND?: Prisma.userPapeisWhereInput | Prisma.userPapeisWhereInput[]
   OR?: Prisma.userPapeisWhereInput[]
   NOT?: Prisma.userPapeisWhereInput | Prisma.userPapeisWhereInput[]
-  userId?: Prisma.StringFilter<"userPapeis"> | string
-  idPapel?: Prisma.StringFilter<"userPapeis"> | string
-  Papeis?: Prisma.XOR<Prisma.PapeisScalarRelationFilter, Prisma.PapeisWhereInput>
+  id?: Prisma.StringFilter<"userPapeis"> | string
+  idPapeis?: Prisma.IntFilter<"userPapeis"> | number
+  papel?: Prisma.XOR<Prisma.PapelScalarRelationFilter, Prisma.papelWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.userWhereInput>
-}, "userId_idPapel">
+  userPapeisPermissoes?: Prisma.UserPapeisPermissoesListRelationFilter
+}, "id_idPapeis">
 
 export type userPapeisOrderByWithAggregationInput = {
-  userId?: Prisma.SortOrder
-  idPapel?: Prisma.SortOrder
+  id?: Prisma.SortOrder
+  idPapeis?: Prisma.SortOrder
   _count?: Prisma.userPapeisCountOrderByAggregateInput
+  _avg?: Prisma.userPapeisAvgOrderByAggregateInput
   _max?: Prisma.userPapeisMaxOrderByAggregateInput
   _min?: Prisma.userPapeisMinOrderByAggregateInput
+  _sum?: Prisma.userPapeisSumOrderByAggregateInput
 }
 
 export type userPapeisScalarWhereWithAggregatesInput = {
   AND?: Prisma.userPapeisScalarWhereWithAggregatesInput | Prisma.userPapeisScalarWhereWithAggregatesInput[]
   OR?: Prisma.userPapeisScalarWhereWithAggregatesInput[]
   NOT?: Prisma.userPapeisScalarWhereWithAggregatesInput | Prisma.userPapeisScalarWhereWithAggregatesInput[]
-  userId?: Prisma.StringWithAggregatesFilter<"userPapeis"> | string
-  idPapel?: Prisma.StringWithAggregatesFilter<"userPapeis"> | string
+  id?: Prisma.StringWithAggregatesFilter<"userPapeis"> | string
+  idPapeis?: Prisma.IntWithAggregatesFilter<"userPapeis"> | number
 }
 
 export type userPapeisCreateInput = {
-  Papeis: Prisma.PapeisCreateNestedOneWithoutUserPapeisInput
+  papel: Prisma.papelCreateNestedOneWithoutUserPapeisInput
   user: Prisma.userCreateNestedOneWithoutUserPapeisInput
+  userPapeisPermissoes?: Prisma.userPapeisPermissoesCreateNestedManyWithoutUserPapeisInput
 }
 
 export type userPapeisUncheckedCreateInput = {
-  userId: string
-  idPapel: string
+  id: string
+  idPapeis: number
+  userPapeisPermissoes?: Prisma.userPapeisPermissoesUncheckedCreateNestedManyWithoutUserPapeisInput
 }
 
 export type userPapeisUpdateInput = {
-  Papeis?: Prisma.PapeisUpdateOneRequiredWithoutUserPapeisNestedInput
+  papel?: Prisma.papelUpdateOneRequiredWithoutUserPapeisNestedInput
   user?: Prisma.userUpdateOneRequiredWithoutUserPapeisNestedInput
+  userPapeisPermissoes?: Prisma.userPapeisPermissoesUpdateManyWithoutUserPapeisNestedInput
 }
 
 export type userPapeisUncheckedUpdateInput = {
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
-  idPapel?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  idPapeis?: Prisma.IntFieldUpdateOperationsInput | number
+  userPapeisPermissoes?: Prisma.userPapeisPermissoesUncheckedUpdateManyWithoutUserPapeisNestedInput
 }
 
 export type userPapeisCreateManyInput = {
-  userId: string
-  idPapel: string
+  id: string
+  idPapeis: number
 }
 
 export type userPapeisUpdateManyMutationInput = {
@@ -226,8 +269,8 @@ export type userPapeisUpdateManyMutationInput = {
 }
 
 export type userPapeisUncheckedUpdateManyInput = {
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
-  idPapel?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  idPapeis?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type UserPapeisListRelationFilter = {
@@ -240,65 +283,78 @@ export type userPapeisOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type userPapeisUserIdIdPapelCompoundUniqueInput = {
-  userId: string
-  idPapel: string
+export type userPapeisIdIdPapeisCompoundUniqueInput = {
+  id: string
+  idPapeis: number
 }
 
 export type userPapeisCountOrderByAggregateInput = {
-  userId?: Prisma.SortOrder
-  idPapel?: Prisma.SortOrder
+  id?: Prisma.SortOrder
+  idPapeis?: Prisma.SortOrder
+}
+
+export type userPapeisAvgOrderByAggregateInput = {
+  idPapeis?: Prisma.SortOrder
 }
 
 export type userPapeisMaxOrderByAggregateInput = {
-  userId?: Prisma.SortOrder
-  idPapel?: Prisma.SortOrder
+  id?: Prisma.SortOrder
+  idPapeis?: Prisma.SortOrder
 }
 
 export type userPapeisMinOrderByAggregateInput = {
-  userId?: Prisma.SortOrder
-  idPapel?: Prisma.SortOrder
+  id?: Prisma.SortOrder
+  idPapeis?: Prisma.SortOrder
 }
 
-export type userPapeisCreateNestedManyWithoutPapeisInput = {
-  create?: Prisma.XOR<Prisma.userPapeisCreateWithoutPapeisInput, Prisma.userPapeisUncheckedCreateWithoutPapeisInput> | Prisma.userPapeisCreateWithoutPapeisInput[] | Prisma.userPapeisUncheckedCreateWithoutPapeisInput[]
-  connectOrCreate?: Prisma.userPapeisCreateOrConnectWithoutPapeisInput | Prisma.userPapeisCreateOrConnectWithoutPapeisInput[]
-  createMany?: Prisma.userPapeisCreateManyPapeisInputEnvelope
+export type userPapeisSumOrderByAggregateInput = {
+  idPapeis?: Prisma.SortOrder
+}
+
+export type UserPapeisScalarRelationFilter = {
+  is?: Prisma.userPapeisWhereInput
+  isNot?: Prisma.userPapeisWhereInput
+}
+
+export type userPapeisCreateNestedManyWithoutPapelInput = {
+  create?: Prisma.XOR<Prisma.userPapeisCreateWithoutPapelInput, Prisma.userPapeisUncheckedCreateWithoutPapelInput> | Prisma.userPapeisCreateWithoutPapelInput[] | Prisma.userPapeisUncheckedCreateWithoutPapelInput[]
+  connectOrCreate?: Prisma.userPapeisCreateOrConnectWithoutPapelInput | Prisma.userPapeisCreateOrConnectWithoutPapelInput[]
+  createMany?: Prisma.userPapeisCreateManyPapelInputEnvelope
   connect?: Prisma.userPapeisWhereUniqueInput | Prisma.userPapeisWhereUniqueInput[]
 }
 
-export type userPapeisUncheckedCreateNestedManyWithoutPapeisInput = {
-  create?: Prisma.XOR<Prisma.userPapeisCreateWithoutPapeisInput, Prisma.userPapeisUncheckedCreateWithoutPapeisInput> | Prisma.userPapeisCreateWithoutPapeisInput[] | Prisma.userPapeisUncheckedCreateWithoutPapeisInput[]
-  connectOrCreate?: Prisma.userPapeisCreateOrConnectWithoutPapeisInput | Prisma.userPapeisCreateOrConnectWithoutPapeisInput[]
-  createMany?: Prisma.userPapeisCreateManyPapeisInputEnvelope
+export type userPapeisUncheckedCreateNestedManyWithoutPapelInput = {
+  create?: Prisma.XOR<Prisma.userPapeisCreateWithoutPapelInput, Prisma.userPapeisUncheckedCreateWithoutPapelInput> | Prisma.userPapeisCreateWithoutPapelInput[] | Prisma.userPapeisUncheckedCreateWithoutPapelInput[]
+  connectOrCreate?: Prisma.userPapeisCreateOrConnectWithoutPapelInput | Prisma.userPapeisCreateOrConnectWithoutPapelInput[]
+  createMany?: Prisma.userPapeisCreateManyPapelInputEnvelope
   connect?: Prisma.userPapeisWhereUniqueInput | Prisma.userPapeisWhereUniqueInput[]
 }
 
-export type userPapeisUpdateManyWithoutPapeisNestedInput = {
-  create?: Prisma.XOR<Prisma.userPapeisCreateWithoutPapeisInput, Prisma.userPapeisUncheckedCreateWithoutPapeisInput> | Prisma.userPapeisCreateWithoutPapeisInput[] | Prisma.userPapeisUncheckedCreateWithoutPapeisInput[]
-  connectOrCreate?: Prisma.userPapeisCreateOrConnectWithoutPapeisInput | Prisma.userPapeisCreateOrConnectWithoutPapeisInput[]
-  upsert?: Prisma.userPapeisUpsertWithWhereUniqueWithoutPapeisInput | Prisma.userPapeisUpsertWithWhereUniqueWithoutPapeisInput[]
-  createMany?: Prisma.userPapeisCreateManyPapeisInputEnvelope
+export type userPapeisUpdateManyWithoutPapelNestedInput = {
+  create?: Prisma.XOR<Prisma.userPapeisCreateWithoutPapelInput, Prisma.userPapeisUncheckedCreateWithoutPapelInput> | Prisma.userPapeisCreateWithoutPapelInput[] | Prisma.userPapeisUncheckedCreateWithoutPapelInput[]
+  connectOrCreate?: Prisma.userPapeisCreateOrConnectWithoutPapelInput | Prisma.userPapeisCreateOrConnectWithoutPapelInput[]
+  upsert?: Prisma.userPapeisUpsertWithWhereUniqueWithoutPapelInput | Prisma.userPapeisUpsertWithWhereUniqueWithoutPapelInput[]
+  createMany?: Prisma.userPapeisCreateManyPapelInputEnvelope
   set?: Prisma.userPapeisWhereUniqueInput | Prisma.userPapeisWhereUniqueInput[]
   disconnect?: Prisma.userPapeisWhereUniqueInput | Prisma.userPapeisWhereUniqueInput[]
   delete?: Prisma.userPapeisWhereUniqueInput | Prisma.userPapeisWhereUniqueInput[]
   connect?: Prisma.userPapeisWhereUniqueInput | Prisma.userPapeisWhereUniqueInput[]
-  update?: Prisma.userPapeisUpdateWithWhereUniqueWithoutPapeisInput | Prisma.userPapeisUpdateWithWhereUniqueWithoutPapeisInput[]
-  updateMany?: Prisma.userPapeisUpdateManyWithWhereWithoutPapeisInput | Prisma.userPapeisUpdateManyWithWhereWithoutPapeisInput[]
+  update?: Prisma.userPapeisUpdateWithWhereUniqueWithoutPapelInput | Prisma.userPapeisUpdateWithWhereUniqueWithoutPapelInput[]
+  updateMany?: Prisma.userPapeisUpdateManyWithWhereWithoutPapelInput | Prisma.userPapeisUpdateManyWithWhereWithoutPapelInput[]
   deleteMany?: Prisma.userPapeisScalarWhereInput | Prisma.userPapeisScalarWhereInput[]
 }
 
-export type userPapeisUncheckedUpdateManyWithoutPapeisNestedInput = {
-  create?: Prisma.XOR<Prisma.userPapeisCreateWithoutPapeisInput, Prisma.userPapeisUncheckedCreateWithoutPapeisInput> | Prisma.userPapeisCreateWithoutPapeisInput[] | Prisma.userPapeisUncheckedCreateWithoutPapeisInput[]
-  connectOrCreate?: Prisma.userPapeisCreateOrConnectWithoutPapeisInput | Prisma.userPapeisCreateOrConnectWithoutPapeisInput[]
-  upsert?: Prisma.userPapeisUpsertWithWhereUniqueWithoutPapeisInput | Prisma.userPapeisUpsertWithWhereUniqueWithoutPapeisInput[]
-  createMany?: Prisma.userPapeisCreateManyPapeisInputEnvelope
+export type userPapeisUncheckedUpdateManyWithoutPapelNestedInput = {
+  create?: Prisma.XOR<Prisma.userPapeisCreateWithoutPapelInput, Prisma.userPapeisUncheckedCreateWithoutPapelInput> | Prisma.userPapeisCreateWithoutPapelInput[] | Prisma.userPapeisUncheckedCreateWithoutPapelInput[]
+  connectOrCreate?: Prisma.userPapeisCreateOrConnectWithoutPapelInput | Prisma.userPapeisCreateOrConnectWithoutPapelInput[]
+  upsert?: Prisma.userPapeisUpsertWithWhereUniqueWithoutPapelInput | Prisma.userPapeisUpsertWithWhereUniqueWithoutPapelInput[]
+  createMany?: Prisma.userPapeisCreateManyPapelInputEnvelope
   set?: Prisma.userPapeisWhereUniqueInput | Prisma.userPapeisWhereUniqueInput[]
   disconnect?: Prisma.userPapeisWhereUniqueInput | Prisma.userPapeisWhereUniqueInput[]
   delete?: Prisma.userPapeisWhereUniqueInput | Prisma.userPapeisWhereUniqueInput[]
   connect?: Prisma.userPapeisWhereUniqueInput | Prisma.userPapeisWhereUniqueInput[]
-  update?: Prisma.userPapeisUpdateWithWhereUniqueWithoutPapeisInput | Prisma.userPapeisUpdateWithWhereUniqueWithoutPapeisInput[]
-  updateMany?: Prisma.userPapeisUpdateManyWithWhereWithoutPapeisInput | Prisma.userPapeisUpdateManyWithWhereWithoutPapeisInput[]
+  update?: Prisma.userPapeisUpdateWithWhereUniqueWithoutPapelInput | Prisma.userPapeisUpdateWithWhereUniqueWithoutPapelInput[]
+  updateMany?: Prisma.userPapeisUpdateManyWithWhereWithoutPapelInput | Prisma.userPapeisUpdateManyWithWhereWithoutPapelInput[]
   deleteMany?: Prisma.userPapeisScalarWhereInput | Prisma.userPapeisScalarWhereInput[]
 }
 
@@ -344,53 +400,71 @@ export type userPapeisUncheckedUpdateManyWithoutUserNestedInput = {
   deleteMany?: Prisma.userPapeisScalarWhereInput | Prisma.userPapeisScalarWhereInput[]
 }
 
-export type userPapeisCreateWithoutPapeisInput = {
+export type userPapeisCreateNestedOneWithoutUserPapeisPermissoesInput = {
+  create?: Prisma.XOR<Prisma.userPapeisCreateWithoutUserPapeisPermissoesInput, Prisma.userPapeisUncheckedCreateWithoutUserPapeisPermissoesInput>
+  connectOrCreate?: Prisma.userPapeisCreateOrConnectWithoutUserPapeisPermissoesInput
+  connect?: Prisma.userPapeisWhereUniqueInput
+}
+
+export type userPapeisUpdateOneRequiredWithoutUserPapeisPermissoesNestedInput = {
+  create?: Prisma.XOR<Prisma.userPapeisCreateWithoutUserPapeisPermissoesInput, Prisma.userPapeisUncheckedCreateWithoutUserPapeisPermissoesInput>
+  connectOrCreate?: Prisma.userPapeisCreateOrConnectWithoutUserPapeisPermissoesInput
+  upsert?: Prisma.userPapeisUpsertWithoutUserPapeisPermissoesInput
+  connect?: Prisma.userPapeisWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.userPapeisUpdateToOneWithWhereWithoutUserPapeisPermissoesInput, Prisma.userPapeisUpdateWithoutUserPapeisPermissoesInput>, Prisma.userPapeisUncheckedUpdateWithoutUserPapeisPermissoesInput>
+}
+
+export type userPapeisCreateWithoutPapelInput = {
   user: Prisma.userCreateNestedOneWithoutUserPapeisInput
+  userPapeisPermissoes?: Prisma.userPapeisPermissoesCreateNestedManyWithoutUserPapeisInput
 }
 
-export type userPapeisUncheckedCreateWithoutPapeisInput = {
-  userId: string
+export type userPapeisUncheckedCreateWithoutPapelInput = {
+  id: string
+  userPapeisPermissoes?: Prisma.userPapeisPermissoesUncheckedCreateNestedManyWithoutUserPapeisInput
 }
 
-export type userPapeisCreateOrConnectWithoutPapeisInput = {
+export type userPapeisCreateOrConnectWithoutPapelInput = {
   where: Prisma.userPapeisWhereUniqueInput
-  create: Prisma.XOR<Prisma.userPapeisCreateWithoutPapeisInput, Prisma.userPapeisUncheckedCreateWithoutPapeisInput>
+  create: Prisma.XOR<Prisma.userPapeisCreateWithoutPapelInput, Prisma.userPapeisUncheckedCreateWithoutPapelInput>
 }
 
-export type userPapeisCreateManyPapeisInputEnvelope = {
-  data: Prisma.userPapeisCreateManyPapeisInput | Prisma.userPapeisCreateManyPapeisInput[]
+export type userPapeisCreateManyPapelInputEnvelope = {
+  data: Prisma.userPapeisCreateManyPapelInput | Prisma.userPapeisCreateManyPapelInput[]
 }
 
-export type userPapeisUpsertWithWhereUniqueWithoutPapeisInput = {
+export type userPapeisUpsertWithWhereUniqueWithoutPapelInput = {
   where: Prisma.userPapeisWhereUniqueInput
-  update: Prisma.XOR<Prisma.userPapeisUpdateWithoutPapeisInput, Prisma.userPapeisUncheckedUpdateWithoutPapeisInput>
-  create: Prisma.XOR<Prisma.userPapeisCreateWithoutPapeisInput, Prisma.userPapeisUncheckedCreateWithoutPapeisInput>
+  update: Prisma.XOR<Prisma.userPapeisUpdateWithoutPapelInput, Prisma.userPapeisUncheckedUpdateWithoutPapelInput>
+  create: Prisma.XOR<Prisma.userPapeisCreateWithoutPapelInput, Prisma.userPapeisUncheckedCreateWithoutPapelInput>
 }
 
-export type userPapeisUpdateWithWhereUniqueWithoutPapeisInput = {
+export type userPapeisUpdateWithWhereUniqueWithoutPapelInput = {
   where: Prisma.userPapeisWhereUniqueInput
-  data: Prisma.XOR<Prisma.userPapeisUpdateWithoutPapeisInput, Prisma.userPapeisUncheckedUpdateWithoutPapeisInput>
+  data: Prisma.XOR<Prisma.userPapeisUpdateWithoutPapelInput, Prisma.userPapeisUncheckedUpdateWithoutPapelInput>
 }
 
-export type userPapeisUpdateManyWithWhereWithoutPapeisInput = {
+export type userPapeisUpdateManyWithWhereWithoutPapelInput = {
   where: Prisma.userPapeisScalarWhereInput
-  data: Prisma.XOR<Prisma.userPapeisUpdateManyMutationInput, Prisma.userPapeisUncheckedUpdateManyWithoutPapeisInput>
+  data: Prisma.XOR<Prisma.userPapeisUpdateManyMutationInput, Prisma.userPapeisUncheckedUpdateManyWithoutPapelInput>
 }
 
 export type userPapeisScalarWhereInput = {
   AND?: Prisma.userPapeisScalarWhereInput | Prisma.userPapeisScalarWhereInput[]
   OR?: Prisma.userPapeisScalarWhereInput[]
   NOT?: Prisma.userPapeisScalarWhereInput | Prisma.userPapeisScalarWhereInput[]
-  userId?: Prisma.StringFilter<"userPapeis"> | string
-  idPapel?: Prisma.StringFilter<"userPapeis"> | string
+  id?: Prisma.StringFilter<"userPapeis"> | string
+  idPapeis?: Prisma.IntFilter<"userPapeis"> | number
 }
 
 export type userPapeisCreateWithoutUserInput = {
-  Papeis: Prisma.PapeisCreateNestedOneWithoutUserPapeisInput
+  papel: Prisma.papelCreateNestedOneWithoutUserPapeisInput
+  userPapeisPermissoes?: Prisma.userPapeisPermissoesCreateNestedManyWithoutUserPapeisInput
 }
 
 export type userPapeisUncheckedCreateWithoutUserInput = {
-  idPapel: string
+  idPapeis: number
+  userPapeisPermissoes?: Prisma.userPapeisPermissoesUncheckedCreateNestedManyWithoutUserPapeisInput
 }
 
 export type userPapeisCreateOrConnectWithoutUserInput = {
@@ -418,69 +492,143 @@ export type userPapeisUpdateManyWithWhereWithoutUserInput = {
   data: Prisma.XOR<Prisma.userPapeisUpdateManyMutationInput, Prisma.userPapeisUncheckedUpdateManyWithoutUserInput>
 }
 
-export type userPapeisCreateManyPapeisInput = {
-  userId: string
+export type userPapeisCreateWithoutUserPapeisPermissoesInput = {
+  papel: Prisma.papelCreateNestedOneWithoutUserPapeisInput
+  user: Prisma.userCreateNestedOneWithoutUserPapeisInput
 }
 
-export type userPapeisUpdateWithoutPapeisInput = {
+export type userPapeisUncheckedCreateWithoutUserPapeisPermissoesInput = {
+  id: string
+  idPapeis: number
+}
+
+export type userPapeisCreateOrConnectWithoutUserPapeisPermissoesInput = {
+  where: Prisma.userPapeisWhereUniqueInput
+  create: Prisma.XOR<Prisma.userPapeisCreateWithoutUserPapeisPermissoesInput, Prisma.userPapeisUncheckedCreateWithoutUserPapeisPermissoesInput>
+}
+
+export type userPapeisUpsertWithoutUserPapeisPermissoesInput = {
+  update: Prisma.XOR<Prisma.userPapeisUpdateWithoutUserPapeisPermissoesInput, Prisma.userPapeisUncheckedUpdateWithoutUserPapeisPermissoesInput>
+  create: Prisma.XOR<Prisma.userPapeisCreateWithoutUserPapeisPermissoesInput, Prisma.userPapeisUncheckedCreateWithoutUserPapeisPermissoesInput>
+  where?: Prisma.userPapeisWhereInput
+}
+
+export type userPapeisUpdateToOneWithWhereWithoutUserPapeisPermissoesInput = {
+  where?: Prisma.userPapeisWhereInput
+  data: Prisma.XOR<Prisma.userPapeisUpdateWithoutUserPapeisPermissoesInput, Prisma.userPapeisUncheckedUpdateWithoutUserPapeisPermissoesInput>
+}
+
+export type userPapeisUpdateWithoutUserPapeisPermissoesInput = {
+  papel?: Prisma.papelUpdateOneRequiredWithoutUserPapeisNestedInput
   user?: Prisma.userUpdateOneRequiredWithoutUserPapeisNestedInput
 }
 
-export type userPapeisUncheckedUpdateWithoutPapeisInput = {
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
+export type userPapeisUncheckedUpdateWithoutUserPapeisPermissoesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  idPapeis?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
-export type userPapeisUncheckedUpdateManyWithoutPapeisInput = {
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
+export type userPapeisCreateManyPapelInput = {
+  id: string
+}
+
+export type userPapeisUpdateWithoutPapelInput = {
+  user?: Prisma.userUpdateOneRequiredWithoutUserPapeisNestedInput
+  userPapeisPermissoes?: Prisma.userPapeisPermissoesUpdateManyWithoutUserPapeisNestedInput
+}
+
+export type userPapeisUncheckedUpdateWithoutPapelInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userPapeisPermissoes?: Prisma.userPapeisPermissoesUncheckedUpdateManyWithoutUserPapeisNestedInput
+}
+
+export type userPapeisUncheckedUpdateManyWithoutPapelInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type userPapeisCreateManyUserInput = {
-  idPapel: string
+  idPapeis: number
 }
 
 export type userPapeisUpdateWithoutUserInput = {
-  Papeis?: Prisma.PapeisUpdateOneRequiredWithoutUserPapeisNestedInput
+  papel?: Prisma.papelUpdateOneRequiredWithoutUserPapeisNestedInput
+  userPapeisPermissoes?: Prisma.userPapeisPermissoesUpdateManyWithoutUserPapeisNestedInput
 }
 
 export type userPapeisUncheckedUpdateWithoutUserInput = {
-  idPapel?: Prisma.StringFieldUpdateOperationsInput | string
+  idPapeis?: Prisma.IntFieldUpdateOperationsInput | number
+  userPapeisPermissoes?: Prisma.userPapeisPermissoesUncheckedUpdateManyWithoutUserPapeisNestedInput
 }
 
 export type userPapeisUncheckedUpdateManyWithoutUserInput = {
-  idPapel?: Prisma.StringFieldUpdateOperationsInput | string
+  idPapeis?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 
+/**
+ * Count Type UserPapeisCountOutputType
+ */
+
+export type UserPapeisCountOutputType = {
+  userPapeisPermissoes: number
+}
+
+export type UserPapeisCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  userPapeisPermissoes?: boolean | UserPapeisCountOutputTypeCountUserPapeisPermissoesArgs
+}
+
+/**
+ * UserPapeisCountOutputType without action
+ */
+export type UserPapeisCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserPapeisCountOutputType
+   */
+  select?: Prisma.UserPapeisCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * UserPapeisCountOutputType without action
+ */
+export type UserPapeisCountOutputTypeCountUserPapeisPermissoesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.userPapeisPermissoesWhereInput
+}
+
 
 export type userPapeisSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  userId?: boolean
-  idPapel?: boolean
-  Papeis?: boolean | Prisma.PapeisDefaultArgs<ExtArgs>
+  id?: boolean
+  idPapeis?: boolean
+  papel?: boolean | Prisma.papelDefaultArgs<ExtArgs>
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
+  userPapeisPermissoes?: boolean | Prisma.userPapeis$userPapeisPermissoesArgs<ExtArgs>
+  _count?: boolean | Prisma.UserPapeisCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["userPapeis"]>
 
 
 
 export type userPapeisSelectScalar = {
-  userId?: boolean
-  idPapel?: boolean
+  id?: boolean
+  idPapeis?: boolean
 }
 
-export type userPapeisOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"userId" | "idPapel", ExtArgs["result"]["userPapeis"]>
+export type userPapeisOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "idPapeis", ExtArgs["result"]["userPapeis"]>
 export type userPapeisInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  Papeis?: boolean | Prisma.PapeisDefaultArgs<ExtArgs>
+  papel?: boolean | Prisma.papelDefaultArgs<ExtArgs>
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
+  userPapeisPermissoes?: boolean | Prisma.userPapeis$userPapeisPermissoesArgs<ExtArgs>
+  _count?: boolean | Prisma.UserPapeisCountOutputTypeDefaultArgs<ExtArgs>
 }
 
 export type $userPapeisPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "userPapeis"
   objects: {
-    Papeis: Prisma.$PapeisPayload<ExtArgs>
+    papel: Prisma.$papelPayload<ExtArgs>
     user: Prisma.$userPayload<ExtArgs>
+    userPapeisPermissoes: Prisma.$userPapeisPermissoesPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    userId: string
-    idPapel: string
+    id: string
+    idPapeis: number
   }, ExtArgs["result"]["userPapeis"]>
   composites: {}
 }
@@ -564,8 +712,8 @@ export interface userPapeisDelegate<ExtArgs extends runtime.Types.Extensions.Int
    * // Get first 10 UserPapeis
    * const userPapeis = await prisma.userPapeis.findMany({ take: 10 })
    * 
-   * // Only select the `userId`
-   * const userPapeisWithUserIdOnly = await prisma.userPapeis.findMany({ select: { userId: true } })
+   * // Only select the `id`
+   * const userPapeisWithIdOnly = await prisma.userPapeis.findMany({ select: { id: true } })
    * 
    */
   findMany<T extends userPapeisFindManyArgs>(args?: Prisma.SelectSubset<T, userPapeisFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$userPapeisPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -821,8 +969,9 @@ readonly fields: userPapeisFieldRefs;
  */
 export interface Prisma__userPapeisClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  Papeis<T extends Prisma.PapeisDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PapeisDefaultArgs<ExtArgs>>): Prisma.Prisma__PapeisClient<runtime.Types.Result.GetResult<Prisma.$PapeisPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  papel<T extends Prisma.papelDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.papelDefaultArgs<ExtArgs>>): Prisma.Prisma__papelClient<runtime.Types.Result.GetResult<Prisma.$papelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   user<T extends Prisma.userDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.userDefaultArgs<ExtArgs>>): Prisma.Prisma__userClient<runtime.Types.Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  userPapeisPermissoes<T extends Prisma.userPapeis$userPapeisPermissoesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.userPapeis$userPapeisPermissoesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$userPapeisPermissoesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -852,8 +1001,8 @@ export interface Prisma__userPapeisClient<T, Null = never, ExtArgs extends runti
  * Fields of the userPapeis model
  */
 export interface userPapeisFieldRefs {
-  readonly userId: Prisma.FieldRef<"userPapeis", 'String'>
-  readonly idPapel: Prisma.FieldRef<"userPapeis", 'String'>
+  readonly id: Prisma.FieldRef<"userPapeis", 'String'>
+  readonly idPapeis: Prisma.FieldRef<"userPapeis", 'Int'>
 }
     
 
@@ -1193,6 +1342,30 @@ export type userPapeisDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.In
    * Limit how many userPapeis to delete.
    */
   limit?: number
+}
+
+/**
+ * userPapeis.userPapeisPermissoes
+ */
+export type userPapeis$userPapeisPermissoesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the userPapeisPermissoes
+   */
+  select?: Prisma.userPapeisPermissoesSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the userPapeisPermissoes
+   */
+  omit?: Prisma.userPapeisPermissoesOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.userPapeisPermissoesInclude<ExtArgs> | null
+  where?: Prisma.userPapeisPermissoesWhereInput
+  orderBy?: Prisma.userPapeisPermissoesOrderByWithRelationInput | Prisma.userPapeisPermissoesOrderByWithRelationInput[]
+  cursor?: Prisma.userPapeisPermissoesWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.UserPapeisPermissoesScalarFieldEnum | Prisma.UserPapeisPermissoesScalarFieldEnum[]
 }
 
 /**

@@ -7,10 +7,9 @@
     "dist"
   ],
   "exports": {
-    "./authnext": {
-      "types": "./dist/next/auth-next.d.ts",
-      "default": "./dist/next/auth-next.js"
-    },
+    "./authnext": "./dist/next/auth-next.js",
+    "./authnext/client": "./dist/next/auth-client.js",
+    "./authnext/session": "./dist/next/session.js",
     "./authstart": {
       "types": "./dist/start/auth-start.d.ts",
       "default": "./dist/start/auth-start.js"

@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client"
-  output   = "../../src/generated/auth"
+  output   = "../../src/generated/authapps"
 }
 
 datasource authDb {
@@ -24,10 +24,16 @@ model account {
   user                  user      @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-model Papeis {
-  idPapel    String       @id(map: "PK_Papeis") @default(dbgenerated("newid()"), map: "DF_Papeis_idPapel") @authDb.UniqueIdentifier
+model papel {
+  idPapeis   Int          @id(map: "PK_papeis") @default(autoincrement())
   descPapel  String       @authDb.NVarChar(100)
   userPapeis userPapeis[]
+}
+
+model permissao {
+  idPermissao          Int                    @id(map: "PK_permissao_1") @default(autoincrement())
+  descPermissao        String                 @authDb.NVarChar(100)
+  userPapeisPermissoes userPapeisPermissoes[]
 }
 
 model session {
@@ -69,12 +75,23 @@ model user {
 }
 
 model userPapeis {
-  userId  String @authDb.VarChar(64)
-  idPapel String @authDb.UniqueIdentifier
-  Papeis  Papeis @relation(fields: [idPapel], references: [idPapel], onUpdate: NoAction, map: "FK_userPapeis_Papeis")
-  user    user   @relation(fields: [userId], references: [id], onUpdate: NoAction, map: "FK_userPapeis_user")
+  id                   String                 @authDb.VarChar(64)
+  idPapeis             Int
+  papel                papel                  @relation(fields: [idPapeis], references: [idPapeis], onUpdate: NoAction, map: "FK_userPapeis_papeis")
+  user                 user                   @relation(fields: [id], references: [id], onUpdate: NoAction, map: "FK_userPapeis_user")
+  userPapeisPermissoes userPapeisPermissoes[]
 
-  @@id([userId, idPapel], map: "PK_userPapeis")
+  @@id([id, idPapeis], map: "PK_userPapeis")
+}
+
+model userPapeisPermissoes {
+  id          String     @authDb.VarChar(64)
+  idPapeis    Int
+  idPermissao Int
+  permissao   permissao  @relation(fields: [idPermissao], references: [idPermissao], onUpdate: NoAction, map: "FK_userPapeisPermissoes_permissao")
+  userPapeis  userPapeis @relation(fields: [id, idPapeis], references: [id, idPapeis], onUpdate: NoAction, map: "FK_userPapeisPermissoes_userPapeis")
+
+  @@id([id, idPapeis, idPermissao], map: "PK_userPapeisPermissoes")
 }
 
 model verification {

@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "type": "module",
   "exports": {
+    "./auth/user": "./dist/auth/user.js",
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     }
   },
   "scripts": {
-    "dev": "tsc --watch",
+    "dev": "tsc --watch & tsc-alias --watch",
     "build": "tsc && tsc-alias",
     "lint": "eslint . --max-warnings 0"
   },

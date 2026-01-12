@@ -52,11 +52,13 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   account: 'account',
-  Papeis: 'Papeis',
+  papel: 'papel',
+  permissao: 'permissao',
   session: 'session',
   sysdiagrams: 'sysdiagrams',
   user: 'user',
   userPapeis: 'userPapeis',
+  userPapeisPermissoes: 'userPapeisPermissoes',
   verification: 'verification'
 } as const
 
@@ -96,12 +98,20 @@ export const AccountScalarFieldEnum = {
 export type AccountScalarFieldEnum = (typeof AccountScalarFieldEnum)[keyof typeof AccountScalarFieldEnum]
 
 
-export const PapeisScalarFieldEnum = {
-  idPapel: 'idPapel',
+export const PapelScalarFieldEnum = {
+  idPapeis: 'idPapeis',
   descPapel: 'descPapel'
 } as const
 
-export type PapeisScalarFieldEnum = (typeof PapeisScalarFieldEnum)[keyof typeof PapeisScalarFieldEnum]
+export type PapelScalarFieldEnum = (typeof PapelScalarFieldEnum)[keyof typeof PapelScalarFieldEnum]
+
+
+export const PermissaoScalarFieldEnum = {
+  idPermissao: 'idPermissao',
+  descPermissao: 'descPermissao'
+} as const
+
+export type PermissaoScalarFieldEnum = (typeof PermissaoScalarFieldEnum)[keyof typeof PermissaoScalarFieldEnum]
 
 
 export const SessionScalarFieldEnum = {
@@ -146,11 +156,20 @@ export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof User
 
 
 export const UserPapeisScalarFieldEnum = {
-  userId: 'userId',
-  idPapel: 'idPapel'
+  id: 'id',
+  idPapeis: 'idPapeis'
 } as const
 
 export type UserPapeisScalarFieldEnum = (typeof UserPapeisScalarFieldEnum)[keyof typeof UserPapeisScalarFieldEnum]
+
+
+export const UserPapeisPermissoesScalarFieldEnum = {
+  id: 'id',
+  idPapeis: 'idPapeis',
+  idPermissao: 'idPermissao'
+} as const
+
+export type UserPapeisPermissoesScalarFieldEnum = (typeof UserPapeisPermissoesScalarFieldEnum)[keyof typeof UserPapeisPermissoesScalarFieldEnum]
 
 
 export const VerificationScalarFieldEnum = {

@@ -385,11 +385,13 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   account: 'account',
-  Papeis: 'Papeis',
+  papel: 'papel',
+  permissao: 'permissao',
   session: 'session',
   sysdiagrams: 'sysdiagrams',
   user: 'user',
   userPapeis: 'userPapeis',
+  userPapeisPermissoes: 'userPapeisPermissoes',
   verification: 'verification'
 } as const
 
@@ -406,7 +408,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "account" | "papeis" | "session" | "sysdiagrams" | "user" | "userPapeis" | "verification"
+    modelProps: "account" | "papel" | "permissao" | "session" | "sysdiagrams" | "user" | "userPapeis" | "userPapeisPermissoes" | "verification"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -476,69 +478,135 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    Papeis: {
-      payload: Prisma.$PapeisPayload<ExtArgs>
-      fields: Prisma.PapeisFieldRefs
+    papel: {
+      payload: Prisma.$papelPayload<ExtArgs>
+      fields: Prisma.papelFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.PapeisFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PapeisPayload> | null
+          args: Prisma.papelFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$papelPayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.PapeisFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PapeisPayload>
+          args: Prisma.papelFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$papelPayload>
         }
         findFirst: {
-          args: Prisma.PapeisFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PapeisPayload> | null
+          args: Prisma.papelFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$papelPayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.PapeisFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PapeisPayload>
+          args: Prisma.papelFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$papelPayload>
         }
         findMany: {
-          args: Prisma.PapeisFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PapeisPayload>[]
+          args: Prisma.papelFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$papelPayload>[]
         }
         create: {
-          args: Prisma.PapeisCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PapeisPayload>
+          args: Prisma.papelCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$papelPayload>
         }
         createMany: {
-          args: Prisma.PapeisCreateManyArgs<ExtArgs>
+          args: Prisma.papelCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         delete: {
-          args: Prisma.PapeisDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PapeisPayload>
+          args: Prisma.papelDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$papelPayload>
         }
         update: {
-          args: Prisma.PapeisUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PapeisPayload>
+          args: Prisma.papelUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$papelPayload>
         }
         deleteMany: {
-          args: Prisma.PapeisDeleteManyArgs<ExtArgs>
+          args: Prisma.papelDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.PapeisUpdateManyArgs<ExtArgs>
+          args: Prisma.papelUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         upsert: {
-          args: Prisma.PapeisUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PapeisPayload>
+          args: Prisma.papelUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$papelPayload>
         }
         aggregate: {
-          args: Prisma.PapeisAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregatePapeis>
+          args: Prisma.PapelAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePapel>
         }
         groupBy: {
-          args: Prisma.PapeisGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.PapeisGroupByOutputType>[]
+          args: Prisma.papelGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PapelGroupByOutputType>[]
         }
         count: {
-          args: Prisma.PapeisCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.PapeisCountAggregateOutputType> | number
+          args: Prisma.papelCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PapelCountAggregateOutputType> | number
+        }
+      }
+    }
+    permissao: {
+      payload: Prisma.$permissaoPayload<ExtArgs>
+      fields: Prisma.permissaoFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.permissaoFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$permissaoPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.permissaoFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$permissaoPayload>
+        }
+        findFirst: {
+          args: Prisma.permissaoFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$permissaoPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.permissaoFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$permissaoPayload>
+        }
+        findMany: {
+          args: Prisma.permissaoFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$permissaoPayload>[]
+        }
+        create: {
+          args: Prisma.permissaoCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$permissaoPayload>
+        }
+        createMany: {
+          args: Prisma.permissaoCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.permissaoDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$permissaoPayload>
+        }
+        update: {
+          args: Prisma.permissaoUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$permissaoPayload>
+        }
+        deleteMany: {
+          args: Prisma.permissaoDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.permissaoUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.permissaoUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$permissaoPayload>
+        }
+        aggregate: {
+          args: Prisma.PermissaoAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePermissao>
+        }
+        groupBy: {
+          args: Prisma.permissaoGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PermissaoGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.permissaoCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PermissaoCountAggregateOutputType> | number
         }
       }
     }
@@ -806,6 +874,72 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    userPapeisPermissoes: {
+      payload: Prisma.$userPapeisPermissoesPayload<ExtArgs>
+      fields: Prisma.userPapeisPermissoesFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.userPapeisPermissoesFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$userPapeisPermissoesPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.userPapeisPermissoesFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$userPapeisPermissoesPayload>
+        }
+        findFirst: {
+          args: Prisma.userPapeisPermissoesFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$userPapeisPermissoesPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.userPapeisPermissoesFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$userPapeisPermissoesPayload>
+        }
+        findMany: {
+          args: Prisma.userPapeisPermissoesFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$userPapeisPermissoesPayload>[]
+        }
+        create: {
+          args: Prisma.userPapeisPermissoesCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$userPapeisPermissoesPayload>
+        }
+        createMany: {
+          args: Prisma.userPapeisPermissoesCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.userPapeisPermissoesDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$userPapeisPermissoesPayload>
+        }
+        update: {
+          args: Prisma.userPapeisPermissoesUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$userPapeisPermissoesPayload>
+        }
+        deleteMany: {
+          args: Prisma.userPapeisPermissoesDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.userPapeisPermissoesUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.userPapeisPermissoesUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$userPapeisPermissoesPayload>
+        }
+        aggregate: {
+          args: Prisma.UserPapeisPermissoesAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateUserPapeisPermissoes>
+        }
+        groupBy: {
+          args: Prisma.userPapeisPermissoesGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UserPapeisPermissoesGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.userPapeisPermissoesCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UserPapeisPermissoesCountAggregateOutputType> | number
+        }
+      }
+    }
     verification: {
       payload: Prisma.$verificationPayload<ExtArgs>
       fields: Prisma.verificationFieldRefs
@@ -931,12 +1065,20 @@ export const AccountScalarFieldEnum = {
 export type AccountScalarFieldEnum = (typeof AccountScalarFieldEnum)[keyof typeof AccountScalarFieldEnum]
 
 
-export const PapeisScalarFieldEnum = {
-  idPapel: 'idPapel',
+export const PapelScalarFieldEnum = {
+  idPapeis: 'idPapeis',
   descPapel: 'descPapel'
 } as const
 
-export type PapeisScalarFieldEnum = (typeof PapeisScalarFieldEnum)[keyof typeof PapeisScalarFieldEnum]
+export type PapelScalarFieldEnum = (typeof PapelScalarFieldEnum)[keyof typeof PapelScalarFieldEnum]
+
+
+export const PermissaoScalarFieldEnum = {
+  idPermissao: 'idPermissao',
+  descPermissao: 'descPermissao'
+} as const
+
+export type PermissaoScalarFieldEnum = (typeof PermissaoScalarFieldEnum)[keyof typeof PermissaoScalarFieldEnum]
 
 
 export const SessionScalarFieldEnum = {
@@ -981,11 +1123,20 @@ export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof User
 
 
 export const UserPapeisScalarFieldEnum = {
-  userId: 'userId',
-  idPapel: 'idPapel'
+  id: 'id',
+  idPapeis: 'idPapeis'
 } as const
 
 export type UserPapeisScalarFieldEnum = (typeof UserPapeisScalarFieldEnum)[keyof typeof UserPapeisScalarFieldEnum]
+
+
+export const UserPapeisPermissoesScalarFieldEnum = {
+  id: 'id',
+  idPapeis: 'idPapeis',
+  idPermissao: 'idPermissao'
+} as const
+
+export type UserPapeisPermissoesScalarFieldEnum = (typeof UserPapeisPermissoesScalarFieldEnum)[keyof typeof UserPapeisPermissoesScalarFieldEnum]
 
 
 export const VerificationScalarFieldEnum = {
@@ -1159,11 +1310,13 @@ export type PrismaClientOptions = ({
 }
 export type GlobalOmitConfig = {
   account?: Prisma.accountOmit
-  papeis?: Prisma.PapeisOmit
+  papel?: Prisma.papelOmit
+  permissao?: Prisma.permissaoOmit
   session?: Prisma.sessionOmit
   sysdiagrams?: Prisma.sysdiagramsOmit
   user?: Prisma.userOmit
   userPapeis?: Prisma.userPapeisOmit
+  userPapeisPermissoes?: Prisma.userPapeisPermissoesOmit
   verification?: Prisma.verificationOmit
 }
 

@@ -9,10 +9,12 @@
  * 🟢 You can import this file directly.
  */
 export type * from './models/account'
-export type * from './models/Papeis'
+export type * from './models/papel'
+export type * from './models/permissao'
 export type * from './models/session'
 export type * from './models/sysdiagrams'
 export type * from './models/user'
 export type * from './models/userPapeis'
+export type * from './models/userPapeisPermissoes'
 export type * from './models/verification'
 export type * from './commonInputTypes'

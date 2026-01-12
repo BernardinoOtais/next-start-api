@@ -45,10 +45,15 @@ export { Prisma }
  */
 export type account = Prisma.accountModel
 /**
- * Model Papeis
+ * Model papel
  * 
  */
-export type Papeis = Prisma.PapeisModel
+export type papel = Prisma.papelModel
+/**
+ * Model permissao
+ * 
+ */
+export type permissao = Prisma.permissaoModel
 /**
  * Model session
  * 
@@ -69,6 +74,11 @@ export type user = Prisma.userModel
  * 
  */
 export type userPapeis = Prisma.userPapeisModel
+/**
+ * Model userPapeisPermissoes
+ * 
+ */
+export type userPapeisPermissoes = Prisma.userPapeisPermissoesModel
 /**
  * Model verification
  * 

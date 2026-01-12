@@ -1,5 +1,5 @@
 import { prisma } from "@repo/db/auth-adapter";
-import { getUserDb } from "@repo/db/authweb";
+import { getUserDb } from "@repo/db/authapps";
 import { hashPassword, verifyPassword } from "@repo/encryption/argon2";
 import { type BetterAuthOptions } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
@@ -38,7 +38,14 @@ export const options = {
       const dadosUser = await getUserDb(user.id);
 
       const apelido = dadosUser?.apelido ?? "";
-      const papeis = dadosUser?.userPapeis.map((p) => p.Papeis.descPapel) ?? [];
+      const papeis =
+        dadosUser?.userPapeis.map((p) => {
+          const permissoes = p.userPapeisPermissoes.map(
+            (perm) => perm.permissao.descPermissao
+          );
+          return { papel: p.papel.descPapel, permissoes };
+        }) ?? [];
+
       return {
         session: {
           expiresAt: session.expiresAt,

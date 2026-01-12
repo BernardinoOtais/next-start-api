@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "type": "module",
   "exports": {
-    "./authweb": {
-      "types": "./dist/auth-web/index.d.ts",
-      "default": "./dist/auth-web/index.js"
+    "./authapps": {
+      "types": "./dist/auth-apps/index.d.ts",
+      "default": "./dist/auth-apps/index.js"
     },
     "./auth-adapter": {
-      "types": "./dist/client-adapters/auth/auth.d.ts",
-      "default": "./dist/client-adapters/auth/auth.js"
+      "types": "./dist/client-adapters/authapps/auth.d.ts",
+      "default": "./dist/client-adapters/authapps/auth.js"
     }
   },
   "scripts": {
