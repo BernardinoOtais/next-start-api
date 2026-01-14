@@ -1,13 +1,31 @@
 {
-  "name": "trpc",
+  "name": "@repo/trpc",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsc --watch & tsc-alias --watch",
+    "build": "tsc && tsc-alias",
+    "lint": "eslint . --max-warnings 0"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "type": "commonjs"
+  "dependencies": {
+    "@repo/authweb": "*",
+    "@repo/db": "*",
+    "@repo/tipos": "*",
+    "@repo/logger": "*",
+    "@tanstack/react-query": "^5.90.16",
+    "@trpc/client": "^11.8.1",
+    "@trpc/server": "^11.8.1",
+    "@trpc/tanstack-react-query": "^11.8.1",
+    "superjson": "^2.2.6"
+  }
 }

@@ -4,8 +4,8 @@
   "type": "module",
   "exports": {
     "./authapps": {
-      "types": "./dist/auth-apps/index.d.ts",
-      "default": "./dist/auth-apps/index.js"
+      "types": "./dist/sqlcalls/auth-apps/index.d.ts",
+      "default": "./dist/sqlcalls/auth-apps/index.js"
     },
     "./auth-adapter": {
       "types": "./dist/client-adapters/authapps/auth.d.ts",

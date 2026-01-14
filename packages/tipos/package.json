@@ -3,11 +3,9 @@
   "version": "1.0.0",
   "type": "module",
   "exports": {
-    "./auth/user": "./dist/auth/user.js",
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    }
+    ".": "./dist/index.js",
+    "./qualidade/balancom": "./dist/qualidade/balancom/index.js",
+    "./auth/user": "./dist/auth/user.js"
   },
   "scripts": {
     "dev": "tsc --watch & tsc-alias --watch",

@@ -12,7 +12,8 @@
     "./postcss.config": "./postcss.config.mjs",
     "./lib/*": "./src/lib/*.ts",
     "./components/*": "./src/components/*.tsx",
-    "./hooks/*": "./src/hooks/*.ts"
+    "./hooks/*": "./src/hooks/*.ts",
+    "./componentspersonalizados/dashboard/*": "./src/components-personalizados/dashboard/*.tsx"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",

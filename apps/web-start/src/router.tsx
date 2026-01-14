@@ -6,6 +6,7 @@ import { routeTree } from './routeTree.gen'
 // Create a new router instance
 export const getRouter = () => {
   const router = createRouter({
+    defaultNotFoundComponent: () => <h1>Página não encontrada... 😢</h1>,
     routeTree,
     context: {},
 

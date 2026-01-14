@@ -10,10 +10,8 @@
     "./authnext": "./dist/next/auth-next.js",
     "./authnext/client": "./dist/next/auth-client.js",
     "./authnext/session": "./dist/next/session.js",
-    "./authstart": {
-      "types": "./dist/start/auth-start.d.ts",
-      "default": "./dist/start/auth-start.js"
-    }
+    "./authstart": "./dist/start/auth-start.js",
+    "./authstart/client": "./dist/start/auth-client.js"
   },
   "scripts": {
     "dev": "tsc --watch & tsc-alias --watch",
