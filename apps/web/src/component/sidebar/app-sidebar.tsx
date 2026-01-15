@@ -10,7 +10,10 @@ import {
   SidebarMenuItem,
   SidebarMenuSkeleton,
   SidebarRail,
-} from "./sidebar-modificada";
+} from "@repo/ui/componentspersonalizados/dashboard/sidebar-modificada";
+import BotaoHeader from "./menus/botao-header";
+import NavUserPai from "./menus/nav-user-pai";
+import { NavMain } from "./menus/main-nav/nav-main";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -19,20 +22,20 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <div>Botao header</div>
+              <BotaoHeader />
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
         <Suspense fallback={NavegadorSkeleton(4)}>
-          <div>Nav principal</div>
+          <NavMain />
         </Suspense>
       </SidebarContent>
       <SidebarRail />
       <SidebarFooter>
         <Suspense fallback={NavegadorSkeleton(1)}>
-          <div>Nav user pai</div>
+          <NavUserPai />
         </Suspense>
       </SidebarFooter>
     </Sidebar>

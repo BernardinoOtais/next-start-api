@@ -1,11 +1,10 @@
 import { cookies } from "next/headers";
 
-import { AppSidebar } from "@repo/ui/componentspersonalizados/dashboard/app-sidebar";
-
 import {
   SidebarInset,
   SidebarProvider,
 } from "@repo/ui/componentspersonalizados/dashboard/sidebar-modificada";
+import { AppSidebar } from "@/component/sidebar/app-sidebar";
 
 export default async function Page({
   children,
